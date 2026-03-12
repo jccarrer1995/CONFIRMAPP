@@ -1,0 +1,97 @@
+{
+  "app": {
+    "title": "CONFIRMAPP",
+    "tagline": "El mapa que te cuida"
+  },
+  "auth": {
+    "login": "Iniciar Sesión",
+    "register": "Registrarse",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "tu@ejemplo.com",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar Contraseña",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "signIn": "Iniciar Sesión",
+    "registerButton": "Registrarse",
+    "continueWithGoogle": "Continuar con Google",
+    "continueWithFacebook": "Continuar con Facebook",
+    "orContinueWithEmail": "O CONTINÚA CON CORREO ELECTRÓNICO",
+    "joinThousands": "Únete a miles de usuarios reportando y evitando peligros"
+  },
+  "errors": {
+    "passwordsDoNotMatch": "Las contraseñas no coinciden",
+    "requiredField": "Este campo es obligatorio",
+    "invalidEmail": "Correo electrónico inválido"
+  },
+  "onboarding": {
+    "slide1": {
+      "title": "Bienvenido a CONFIRMAPP",
+      "description": "Descubre lugares seguros y reporta peligros en tiempo real para mantener tu comunidad informada."
+    },
+    "slide2": {
+      "title": "Reporta y Protege",
+      "description": "Comparte información sobre incidentes, tráfico y peligros para ayudar a otros a tomar mejores decisiones."
+    },
+    "slide3": {
+      "title": "Explora con Confianza",
+      "description": "Navega por el mapa con la tranquilidad de saber qué está pasando a tu alrededor en tiempo real."
+    },
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "finish": "Comenzar"
+  },
+  "home": {
+    "welcome": "¡Bienvenido a CONFIRMAPP!",
+    "subtitle": "El mapa que te cuida",
+    "message": "Has iniciado sesión correctamente. Aquí podrás explorar el mapa, reportar incidentes y mantenerte informado sobre lo que sucede en tu área.",
+    "searchPlaceholder": "Buscar",
+    "report": "Reportar",
+    "nav": {
+      "reports": "Mapa",
+      "feed": "Noticias",
+      "notifications": "Notificaciones",
+      "menu": "Menú"
+    }
+  },
+  "menu": {
+    "title": "Menú",
+    "profile": "Mi Perfil",
+    "settings": "Ajustes"
+  },
+  "settings": {
+    "title": "Ajuste de reportes",
+    "searchPlaceholder": "Buscar",
+    "categories": {
+      "emergency": "Emergencia",
+      "safety": "Seguridad",
+      "options": "Opciones"
+    },
+    "reports": {
+      "security": "Emergencia de Seguridad",
+      "ambulance": "Emergencia de ambulancia",
+      "personTheft": "Robo a persona",
+      "vehicleTheft": "Robo de vehículo",
+      "houseTheft": "Robo a casa",
+      "accident": "Accidente",
+      "drugs": "Drogas",
+      "disturbance": "Disturbios",
+      "cableTheft": "Robo de cables"
+    },
+    "showOnMap": "Mostrar en el mapa",
+    "receiveNotifications": "Recibir notificaciones",
+    "noResults": "No se encontraron reportes",
+    "drawer": {
+      "account": "Cuenta",
+      "reportSettings": "Ajustes de reportes",
+      "terms": "Términos y condiciones",
+      "privacy": "Política de privacidad",
+      "logout": "Cerrar Sesión"
+    }
+  },
+  "notifications": {
+    "empty": "No tienes notificaciones"
+  },
+  "news": {
+    "empty": "No hay noticias disponibles"
+  }
+}

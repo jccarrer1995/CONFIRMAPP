@@ -1,0 +1,26 @@
+{
+  "app": {
+    "title": "MapAlert",
+    "tagline": "Community-driven traffic & hazard reporting"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "forgotPassword": "Forgot password?",
+    "signIn": "Sign In",
+    "registerButton": "Register",
+    "continueWithGoogle": "Continue with Google",
+    "continueWithFacebook": "Continue with Facebook",
+    "orContinueWithEmail": "OR CONTINUE WITH EMAIL",
+    "joinThousands": "Join thousands of users reporting and avoiding hazards"
+  },
+  "errors": {
+    "passwordsDoNotMatch": "Passwords do not match",
+    "requiredField": "This field is required",
+    "invalidEmail": "Invalid email"
+  }
+}

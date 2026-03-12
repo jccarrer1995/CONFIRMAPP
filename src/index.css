@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Prevenir zoom en todos los elementos */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  /* Prevenir zoom a nivel de HTML */
+  touch-action: pan-y;
+  -ms-touch-action: pan-y;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  /* Usar unidades de viewport para adaptarse correctamente */
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  width: 100vw; /* Usar viewport width */
+  height: 100vh;
+  min-height: 100vh;
+  min-height: -webkit-fill-available; /* Para iOS */
+  overflow-x: hidden;
+  overflow-y: hidden; /* Desactivar scroll por defecto */
+  -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevenir zoom y selección */
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  /* Prevenir zoom con doble tap */
+  -ms-touch-action: pan-y;
+}
+
+/* Permitir selección de texto solo en inputs y textareas */
+input, 
+textarea, 
+[contenteditable="true"] {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+  -webkit-touch-callout: default;
+}
+
+/* Prevenir zoom en inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+textarea {
+  font-size: 16px !important; /* Previene zoom automático en iOS */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#root {
+  width: 100vw; /* Usar viewport width */
+  height: 100vh;
+  min-height: 100vh;
+  min-height: -webkit-fill-available; /* Para iOS */
+  position: relative;
+  overflow-x: hidden;
+  touch-action: pan-y;
+  /* Asegurar que se adapte al viewport */
+  max-width: 100%;
+}
+
+/* Prevenir zoom en todos los contenedores principales */
+.home-container,
+.login-register-container,
+.onboarding-container,
+.menu-container {
+  touch-action: pan-y;
+  -ms-touch-action: pan-y;
+  overflow-x: hidden;
+}
+
+/* Mejoras para touch en móviles - Aplicar a todo */
+button, 
+a, 
+[role="button"],
+.clickable {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  /* Prevenir selección accidental */
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Prevenir zoom en imágenes */
+img {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  pointer-events: auto;
+  touch-action: pan-y;
+}
+
+/* Prevenir zoom en SVG */
+svg {
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+/* Prevenir zoom en modales y drawers */
+.report-settings-drawer,
+.report-detail-drawer,
+.onboarding-content,
+.login-register-card,
+.menu-card {
+  touch-action: pan-y;
+  -ms-touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Scroll suave pero sin zoom */
+.scrollable {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  touch-action: pan-y;
+}
+
+/* Prevenir zoom en formularios */
+form {
+  touch-action: pan-y;
+}
+
+/* Media query para asegurar comportamiento en todos los dispositivos */
+@media screen and (max-width: 1024px) {
+  * {
+    -webkit-tap-highlight-color: transparent !important;
+  }
+  
+  html {
+    width: 100vw;
+    height: 100%;
+  }
+  
+  body {
+    width: 100vw;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+  
+  #root {
+    width: 100vw;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+  
+  /* Asegurar que los contenedores principales usen el ancho completo */
+  .home-container,
+  .login-register-container,
+  .onboarding-container,
+  .menu-container {
+    width: 100vw;
+    max-width: 100vw;
+  }
+}
