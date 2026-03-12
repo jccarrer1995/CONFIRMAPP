@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ReportSettings from '../components/ReportSettings';
 import ReportModal from '../components/ReportModal';
+import GoogleMapView from '../components/GoogleMapView';
 import './Home.css';
 
 function Home() {
@@ -30,15 +31,9 @@ function Home() {
             />
           </div>
         </div>
-        <img 
-          src={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-80.05,26.71,13,0/400x600?access_token=${import.meta.env.VITE_MAPBOX_TOKEN || ''}`}
-          alt="Mapa"
-          className="map-image"
-          onError={(e) => {
-            // Fallback a una imagen de mapa genérica si falla
-            e.target.src = 'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&h=600&fit=crop';
-          }}
-        />
+        <div className="map-wrapper">
+          <GoogleMapView />
+        </div>
         
         {/* User Profile Picture (centro del mapa) */}
         <div className="user-profile-overlay">
