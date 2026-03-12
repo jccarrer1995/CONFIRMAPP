@@ -79,14 +79,15 @@ El proyecto incluye un workflow para publicar la app en **HTTPS** con GitHub Pag
 ### 2. Activar GitHub Pages desde Actions
 
 1. En el repo → **Settings** → **Pages**.
-2. En **Build and deployment**, **Source** elige **GitHub Actions**.
+2. En **Build and deployment**, **Source** elige **GitHub Actions** (no "Deploy from a branch").
+3. Si el workflow falla con "Get Pages site failed", comprueba que **Source** sea exactamente **GitHub Actions** y guarda.
 
 ### 3. Desplegar
 
 1. Sube los cambios (incluido el workflow y `vite.config.js` con `base: '/CONFIRMAPP/'`).
 2. Haz push a la rama `main`.
-3. Ve a **Actions** en el repo; se ejecutará el workflow "Deploy to GitHub Pages".
-4. Cuando termine, la app estará en: **https://jccarrer1995.github.io/CONFIRMAPP/**
+3. Ve a **Actions** en el repo; se ejecutará el workflow "Deploy to GitHub Pages" (Node 22, build y deploy).
+4. Cuando el workflow termine en verde, la app estará en: **https://jccarrer1995.github.io/CONFIRMAPP/**
 
 ### 4. Google Maps en producción
 
@@ -142,3 +143,25 @@ npm run lint
 5. Ejecutar **`npm run dev`** y abrir la URL en el navegador.
 
 Con eso el proyecto debería funcionar. Si falta la clave de Google Maps, el mapa mostrará un mensaje pidiendo configurarla.
+
+---
+
+## Funcionalidades del mapa (Home)
+
+- **Google Maps:** mapa interactivo (zoom, arrastre). Requiere `VITE_GOOGLE_MAPS_API_KEY` en `.env` o en secretos de GitHub.
+- **Sin POI:** el mapa no muestra puntos de interés de Google (negocios, transporte); solo calles y los marcadores que añade la app.
+- **Centro por defecto:** si no se concede permiso de ubicación, el mapa se centra en **-2.1349326766798455, -79.94157402747106** (zona Guayaquil).
+- **Mi ubicación:** botón para pedir permiso de ubicación; al aceptar, el mapa se centra en el usuario y se muestra un marcador "Tu ubicación".
+- **Marcador de evento:** punto fijo en **-2.135091146387648, -79.94155002272224** con icono de música (estilo Material, gris oscuro). Al hacer clic se abre una ventana con el texto del evento (ej. Oveja Negra y Jombriel, sábado 20:00).
+
+---
+
+## Estructura del proyecto (resumen)
+
+| Ruta / archivo | Descripción |
+|----------------|-------------|
+| `src/pages/Home.jsx` | Pantalla principal con mapa, barra de búsqueda, botón Reportar y navegación inferior. |
+| `src/components/GoogleMapView.jsx` | Componente del mapa (Google Maps), ubicación, marcador de evento e InfoWindow. |
+| `src/context/ReportSettingsContext.jsx` | Contexto para ajustes de reportes. |
+| `.env` / `.env.example` | Variables de entorno (claves de mapa); `.env` no se sube a Git. |
+| `.github/workflows/deploy-pages.yml` | Workflow que hace build y despliega en GitHub Pages al hacer push a `main`. |

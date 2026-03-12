@@ -1,14 +1,37 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
-import { GoogleMap, useJsApiLoader, MarkerF } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, MarkerF, InfoWindowF } from '@react-google-maps/api';
 
-const defaultCenter = { lat: 26.71, lng: -80.05 };
+// Centro por defecto cuando no se concede permiso de ubicación (ej. Guayaquil)
+const defaultCenter = { lat: -2.1349326766798455, lng: -79.94157402747106 };
 const defaultZoom = 13;
+
+// Marcador de evento: Oveja Negra y Jombriel
+const eventPosition = { lat: -2.135091146387648, lng: -79.94155002272224 };
+const EVENT_TITLE = 'Oveja Negra y Jombriel';
+const EVENT_DESCRIPTION = 'Aquí será el evento el sábado a las 20:00. ¡No te lo pierdas!';
+
+// Icono de música para el evento (estilo Material Symbols, gris oscuro)
+// Basado en music_note de Google Material Design
+const eventMarkerIcon = {
+  url: 'data:image/svg+xml,' + encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#374151"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>'
+  ),
+  scaledSize: { width: 48, height: 48 },
+  anchor: { x: 24, y: 24 },
+};
+
+// Estilos para ocultar POI del mapa; solo se verán los marcadores que añadas tú
+const mapStyles = [
+  { featureType: 'poi', elementType: 'all', stylers: [{ visibility: 'off' }] },
+  { featureType: 'transit', elementType: 'all', stylers: [{ visibility: 'off' }] },
+];
 
 function GoogleMapView() {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
   const [userLocation, setUserLocation] = useState(null);
   const [locationError, setLocationError] = useState(null);
   const [locationLoading, setLocationLoading] = useState(false);
+  const [showEventInfo, setShowEventInfo] = useState(false);
   const mapRef = useRef(null);
 
   const { isLoaded, loadError } = useJsApiLoader({
@@ -75,6 +98,7 @@ function GoogleMapView() {
     mapTypeControl: false,
     streetViewControl: false,
     fullscreenControl: true,
+    styles: mapStyles,
   }), []);
 
   const center = userLocation || defaultCenter;
@@ -119,6 +143,52 @@ function GoogleMapView() {
             zIndex={10}
           />
         )}
+
+        {/* Marcador del evento: Oveja Negra y Jombriel */}
+        <MarkerF
+          position={eventPosition}
+          title={EVENT_TITLE}
+          icon={eventMarkerIcon}
+          zIndex={20}
+          onClick={() => setShowEventInfo(true)}
+          cursor="pointer"
+        >
+          {showEventInfo && (
+            <InfoWindowF
+              onCloseClick={() => setShowEventInfo(false)}
+              options={{ maxWidth: 280 }}
+            >
+              <div style={{
+                padding: '4px 0',
+                fontFamily: 'system-ui, sans-serif',
+                minWidth: 220,
+              }}
+              >
+                <div style={{
+                  fontSize: '15px',
+                  fontWeight: 700,
+                  color: '#1D3557',
+                  marginBottom: 6,
+                }}
+                >
+                  🎵 {EVENT_TITLE}
+                </div>
+                <div style={{ fontSize: '13px', color: '#333', lineHeight: 1.4 }}>
+                  {EVENT_DESCRIPTION}
+                </div>
+                <div style={{
+                  marginTop: 8,
+                  fontSize: '12px',
+                  color: '#E63946',
+                  fontWeight: 600,
+                }}
+                >
+                  Sábado 20:00 · ¡Ven a visitarnos!
+                </div>
+              </div>
+            </InfoWindowF>
+          )}
+        </MarkerF>
       </GoogleMap>
 
       {/* Botón para pedir ubicación (gesto del usuario = el navegador suele mostrar el permiso) */}
